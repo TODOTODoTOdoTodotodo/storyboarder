@@ -6,6 +6,7 @@ Storyboarder는 일관된 구조의 PRD를 생성/로드하는 Codex 스킬 세�
 - FE/BE 범위 선택 기반 PRD 인터뷰
 - 역할별 섹션을 포함한 일관된 PRD 템플릿
 - PRD 로더로 완성도 검증 및 누락 섹션 안내
+- 문서(pptx/pdf/xlsx/md)에서 내용 추출 후 PRD 자동 채움
 - 프로젝트 로컬 스킬을 글로벌 Codex 스킬로 동기화 가능
 
 ## 시작하기
@@ -22,13 +23,19 @@ rsync -a ./skills/ ~/.codex/skills/
 $prd-author
 ```
 
-3) 기존 PRD 로드
+3) 문서 기반으로 PRD 채우기 (선택)
+
+```bash
+./skills/prd-author/scripts/extract_doc_text.py <file1> <file2> --out extracted.txt
+```
+
+4) 기존 PRD 로드
 
 ```text
 $prd-loader
 ```
 
-4) 템플릿에서 PRD 파일 직접 생성 (옵션)
+5) 템플릿에서 PRD 파일 직접 생성 (옵션)
 
 ```bash
 ./skills/prd-author/scripts/init_prd.py --project <name> --role fe|be|both --outdir . --owner <owner>
@@ -55,6 +62,9 @@ Q. PRD가 이미 있을 때는?
 
 Q. FE/BE 범위를 나중에 바꿀 수 있나요?
 - 네. 필요 시 범위를 다시 선택해 해당 섹션을 추가/보완하면 됩니다.
+
+Q. 문서 추출이 실패하면?
+- `pdfplumber`, `PyPDF2`, `python-pptx`, `openpyxl` 중 필요한 라이브러리가 없을 수 있습니다. 설치 후 재시도하거나, 핵심 내용을 복사해 PRD 인터뷰에 입력하면 됩니다.
 
 ## TODO
 - 실제 PRD에서 BE 섹션 상세(도메인 모델, API, 데이터 스토어, 인증, 비동기, 관측성, 스케일링, 보안, 마이그레이션, 테스트) 채우기

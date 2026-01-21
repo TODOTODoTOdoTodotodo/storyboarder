@@ -1,6 +1,6 @@
 ---
 name: prd-author
-description: Create and maintain a full PRD by interviewing the user, selecting FE/BE scope, and writing a PRD-<project>.md file in the current project directory. Use when a user asks to create a PRD, requirements doc, planning document, or when PRD fields are missing and need to be completed.
+description: Create and maintain a full PRD by extracting inputs from documents (ppt/pdf/xlsx/md) and interviewing the user, selecting FE/BE scope, and writing a PRD-<project>.md file in the current project directory. Use when a user asks to create a PRD, requirements doc, planning document, or wants to fill PRD sections from provided files.
 ---
 
 # PRD Author
@@ -10,16 +10,21 @@ Create a complete PRD through a structured interview, then save it as `PRD-<proj
 
 ## Workflow
 
-1) Select scope
+1) Collect source documents (optional but preferred)
+- Ask for document paths (pptx, pdf, xlsx, md).
+- Run `scripts/extract_doc_text.py` to extract text.
+- Summarize extracted content and map it to PRD sections.
+
+2) Select scope
 - Ask which scope to write: `FE`, `BE`, or `FE+BE`.
 - If the user wants a codename or project name, suggest a short list and let them pick.
 
-2) Initialize the PRD file
+3) Initialize the PRD file
 - Use `scripts/init_prd.py` to create the file from the template.
 - File naming: `PRD-<project>.md` where `<project>` is a lowercase slug.
 - Do not overwrite an existing PRD unless the user confirms.
 
-3) Interview for core PRD sections
+4) Interview for core PRD sections
 - Problem/Opportunity
 - Goals and Non-goals
 - Users/Personas
@@ -31,7 +36,7 @@ Create a complete PRD through a structured interview, then save it as `PRD-<proj
 - Open questions
 - References
 
-4) Interview for role-specific sections
+5) Interview for role-specific sections
 - If `FE`, ask only FE section questions.
 - If `BE`, ask only BE section questions.
 - If `FE+BE`, ask both.
@@ -58,7 +63,7 @@ BE questions (compact checklist)
 - Data migration/backfill?
 - Testing strategy?
 
-5) Write and refine
+6) Write and refine
 - Update the PRD file section-by-section as answers arrive.
 - Keep unknowns in the Open Questions list instead of guessing.
 
@@ -66,6 +71,7 @@ BE questions (compact checklist)
 
 ### scripts/
 - `scripts/init_prd.py`: create a PRD skeleton from the template and role selection.
+- `scripts/extract_doc_text.py`: extract text from pptx, pdf, xlsx, and md files.
 
 ### assets/
 - `assets/prd_template.md`: the PRD template with FE/BE sections and placeholder markers.
