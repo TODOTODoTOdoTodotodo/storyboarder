@@ -13,7 +13,7 @@ Create a complete PRD through a structured interview, then save it as `PRD-<proj
 1) Collect source documents (optional but preferred)
 - Ask for document paths (pptx, pdf, xlsx, md).
 - Run `scripts/extract_doc_text.py` to extract text.
-- Summarize extracted content and map it to PRD sections.
+- Summarize extracted content (including tables/notes where available) and map it to PRD sections.
 
 2) Select scope
 - Ask which scope to write: `FE`, `BE`, or `FE+BE`.
@@ -72,6 +72,7 @@ BE questions (compact checklist)
 ### scripts/
 - `scripts/init_prd.py`: create a PRD skeleton from the template and role selection.
 - `scripts/extract_doc_text.py`: extract text from pptx, pdf, xlsx, and md files.
+- Includes PPT notes and table text when available.
 
 ### assets/
 - `assets/prd_template.md`: the PRD template with FE/BE sections and placeholder markers.

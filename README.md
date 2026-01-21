@@ -6,7 +6,7 @@ Storyboarder는 일관된 구조의 PRD를 생성/로드하는 Codex 스킬 세�
 - FE/BE 범위 선택 기반 PRD 인터뷰
 - 역할별 섹션을 포함한 일관된 PRD 템플릿
 - PRD 로더로 완성도 검증 및 누락 섹션 안내
-- 문서(pptx/pdf/xlsx/md)에서 내용 추출 후 PRD 자동 채움
+- 문서(pptx/pdf/xlsx/md)에서 내용 추출 후 PRD 자동 채움 (표/발표자 노트 포함)
 - 프로젝트 로컬 스킬을 글로벌 Codex 스킬로 동기화 가능
 
 ## 시작하기
